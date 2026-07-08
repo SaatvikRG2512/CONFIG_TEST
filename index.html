@@ -533,6 +533,10 @@
         WHITE: "WHITE",
         BLUE: "BLUE",
       };
+      const mobileBreakpoint = 760;
+      function getAssetSuffix() {
+        return window.innerWidth <= mobileBreakpoint ? '-mobile' : '';
+      }
       const frameCounts = {
         RED: 11,
         WHITE: 12,
@@ -571,7 +575,8 @@
       function updateImage() {
         const zeroPadded = String(frameIndex).padStart(4, "0");
         const assetColor = colorMap[currentColor] || "RED";
-        image.src = `GV_${assetColor}${zeroPadded}.png`;
+        const suffix = getAssetSuffix();
+        image.src = `GV_${assetColor}${zeroPadded}${suffix}.png`;
         image.alt = `Grand Vitara ${currentColor.toLowerCase()} preview`;
         colorLabel.textContent = `Color: ${displayNames[currentColor] || currentColor}`;
       }
@@ -603,6 +608,10 @@
         swatch.addEventListener("click", () => {
           setActiveColor(swatch.dataset.color);
         });
+      });
+
+      window.addEventListener("resize", () => {
+        updateImage();
       });
 
       heroVisual.addEventListener("pointerdown", startDrag);
