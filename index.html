@@ -517,7 +517,7 @@
         </div>
 
         <div class="hero-visual">
-          <img id="carImage" src="GV_WHITE0001.jpg" alt="Grand Vitara preview" draggable="false" loading="lazy" />
+          <img id="carImage" src="GV_WHITE0001.png" alt="Grand Vitara preview" draggable="false" loading="lazy" />
           <div class="drag-badge">Drag To Move</div>
         </div>
       </section>
@@ -571,7 +571,7 @@
       function updateImage() {
         const zeroPadded = String(frameIndex).padStart(4, "0");
         const assetColor = colorMap[currentColor] || "RED";
-        image.src = `GV_${assetColor}${zeroPadded}.jpg`;
+        image.src = `GV_${assetColor}${zeroPadded}.png`;
         image.alt = `Grand Vitara ${currentColor.toLowerCase()} preview`;
         colorLabel.textContent = `Color: ${displayNames[currentColor] || currentColor}`;
       }
